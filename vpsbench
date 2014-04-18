@@ -136,7 +136,7 @@ function usage {
     cat <<USAGE
 Usage: vpsbench [OPTION...]
 
--a Bench all
+-q Quick benchmark
 -d Bench downloads
 -f Create 100M bigfile
 -x Remove temporary files
@@ -149,31 +149,29 @@ USAGE
 function main {
     test $do_unixbench && bench_unixbench
     test $do_downloads && bench_downloads
-
-    bench_quick
+    test $do_quick     && bench_quick
+    test $do_bigfile   && create_big_file
+    test $do_cleanup   && remove_temporary_files
 }
 
 
 # Parse command line options
-while getopts :adfxu opt; do
+while getopts :qdufx opt; do
     case "$opt" in
-        a)
-            do_downloads=true
-            do_unixbench=true
+        q)
+            do_quick=true
             ;;
         d)
             do_downloads=true
             ;;
-        f)
-            create_big_file
-            exit
-            ;;
-        x)
-            remove_temporary_files
-            exit
-            ;;
         u)
             do_unixbench=true
+            ;;
+        f)
+            do_bigfile=true
+            ;;
+        x)
+            do_cleanup=true
             ;;
         ?)
             usage
