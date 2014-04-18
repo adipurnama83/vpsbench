@@ -107,8 +107,8 @@ function bench_downloads {
 # Perform comprehensive benchmark of cpu and disk
 function bench_unixbench {
     pushd UnixBench > /dev/null
-    # dont need graphics
-    ./Run index
+    make > /dev/null
+    ./Run index # Run non-graphics tests only
     popd > /dev/null
 }
 
