@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #==============================================================================
-# Copyright (c) 2013 Mario Gutierrez <mario@mgutz.com>
+# Copyright (c) 2013  Mario Gutierrez  <mario@mgutz.com>
+# Copyright (c) 2013  Mattias Berge    <mattias.berge@mobenga.com>
+# Copyright (c) 2014  Nathaniel Kofalt <nathaniel@kofalt.com>
 #
 # Licensed under The MIT License
 #==============================================================================
