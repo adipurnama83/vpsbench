@@ -107,6 +107,24 @@ function bench_unixbench {
     popd > /dev/null
 }
 
+# Compile the linux kernel
+function bench_compile {
+	# Multithreaded compile
+	local cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
+
+	wget https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.8.tar.xz
+	tar xf linux-3.8.tar.xz
+	cd linux-3.8/
+
+	echo "Compiling Linux kernel..."
+	make distclean
+	make defconfig > /dev/null
+	time (make -j$cores > /dev/null)
+	echo ""
+
+	rm -rf linux-3.8 linux-3.8.tar.xz
+}
+
 
 # Creates a 100MB file for download testing.
 function create_big_file {
@@ -122,6 +140,7 @@ function remove_temporary_files {
     rm -f vpsbench__*
     rm -f bigfile
     rm -rf tarfile*
+    rm -rf linux-3.8 linux-3.8.tar.xz
     echo OK
 }
 
@@ -143,6 +162,7 @@ USAGE
 # The main script.
 function main {
     test $do_unixbench && bench_unixbench
+    test $do_kernel    && bench_compile
     test $do_downloads && bench_downloads
     test $do_quick     && bench_quick
     test $do_bigfile   && create_big_file
@@ -151,7 +171,7 @@ function main {
 
 
 # Parse command line options
-while getopts :qdufx opt; do
+while getopts :qdukfx opt; do
     case "$opt" in
         q)
             do_quick=true
@@ -161,6 +181,9 @@ while getopts :qdufx opt; do
             ;;
         u)
             do_unixbench=true
+            ;;
+        k)
+            do_kernel=true
             ;;
         f)
             do_bigfile=true

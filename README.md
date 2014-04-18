@@ -22,7 +22,7 @@ Tested on:
 
 Example pre-requisites
 
-    apt-get install build-essential time pigz
+    apt-get update && apt-get install build-essential time pigz
 
 
 Example
