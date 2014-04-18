@@ -1,9 +1,5 @@
 # vpsbench
 
-Modified to use "pigz" for multithreaded gzip, to take use of multiple cpus.
-
-Benchmark VPS performance. See original authers [user submissions](https://github.com/mgutz/vpsbench/wiki/VPS-Hosts)
-
 A script to run simple and comprehensive benchmarks on CPU and IO performance.
 
 
@@ -17,17 +13,16 @@ Tested on:
 
     Usage: vpsbench [OPTION...]
 
-    -a Bench all
+    -q Quick benchmark
     -d Bench downloads
     -f Create 100M bigfile
     -x Remove temporary files
     -u Bench unixbench
 
-Debian pre-requisites
 
-    apt-get install time pigz
-    yum install pigz
-    or similar.. 
+Example pre-requisites
+
+    apt-get install build-essential time pigz
 
 
 Example
