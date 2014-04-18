@@ -144,9 +144,10 @@ Usage: vpsbench [OPTION...]
 
 -q Quick benchmark
 -d Bench downloads
+-u Bench unixbench
+-k Bench kernel compilation
 -f Create 100M bigfile
 -x Remove temporary files
--u Bench unixbench
 USAGE
 }
 
