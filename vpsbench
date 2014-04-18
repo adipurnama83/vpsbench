@@ -102,8 +102,8 @@ function bench_downloads {
 # Perform comprehensive benchmark of cpu and disk
 function bench_unixbench {
     pushd UnixBench > /dev/null
-    make > /dev/null
-    ./Run index # Run non-graphics tests only
+    make all > /dev/null 2>&1
+    ./Run index | grep -v "  exists"
     popd > /dev/null
 }
 
