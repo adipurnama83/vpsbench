@@ -9,32 +9,32 @@
 
 # Quick benchmark, always run
 function bench_quick {
-    local test_file=vpsbench__$$
-    local tar_file=tarfile
-    local now=$(date +"%m/%d/%Y")
+	local test_file=vpsbench__$$
+	local tar_file=tarfile
+	local now=$(date +"%m/%d/%Y")
 
-    local cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
-    local cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
-    local freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
-    local tram=$( free -m | awk 'NR==2 {print $2}' )
-    local swap=$( free -m | awk 'NR==4 {print $2}' )
-    local up=$(uptime|awk '{ $1=$2=$(NF-6)=$(NF-5)=$(NF-4)=$(NF-3)=$(NF-2)=$(NF-1)=$NF=""; print }')
+	local cname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
+	local cores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
+	local freq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
+	local tram=$( free -m | awk 'NR==2 {print $2}' )
+	local swap=$( free -m | awk 'NR==4 {print $2}' )
+	local up=$(uptime|awk '{ $1=$2=$(NF-6)=$(NF-5)=$(NF-4)=$(NF-3)=$(NF-2)=$(NF-1)=$NF=""; print }')
 
-    echo -n "Benching I/O ... "
-    local io=$( ( dd if=/dev/zero of=$test_file bs=64k count=16k conv=fdatasync && rm -f $test_file ) 2>&1 | awk -F, '{io=$NF} END { print io}' )
-    echo OK
+	echo -n "Benching I/O ... "
+	local io=$( ( dd if=/dev/zero of=$test_file bs=64k count=16k conv=fdatasync && rm -f $test_file ) 2>&1 | awk -F, '{io=$NF} END { print io}' )
+	echo OK
 
-    echo -n "Benching CPU. gzipping 50MB file ... "
-    dd if=/dev/urandom of=$tar_file bs=1M count=50 >>/dev/null 2>&1
-    local tf=$( (/usr/bin/time -f "%es" pigz -9 -q $tar_file) 2>&1 )
-    rm -f tarfile*
-    echo OK
+	echo -n "Benching CPU. gzipping 50MB file ... "
+	dd if=/dev/urandom of=$tar_file bs=1M count=50 >>/dev/null 2>&1
+	local tf=$( (/usr/bin/time -f "%es" pigz -9 -q $tar_file) 2>&1 )
+	rm -f tarfile*
+	echo OK
 
-    echo -n "Benching inbound network. Downloading 100MB file ... "
-    local dl=$( _dl http://cachefly.cachefly.net/100mb.test )
-    echo OK
+	echo -n "Benching inbound network. Downloading 100MB file ... "
+	local dl=$( _dl http://cachefly.cachefly.net/100mb.test )
+	echo OK
 
-    cat <<INFO
+	cat <<INFO
 
 
 CPU model: $cname
@@ -52,59 +52,49 @@ INFO
 }
 
 function _dl {
-    wget -O /dev/null "$1" 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}'
+	wget -O /dev/null "$1" 2>&1 | awk '/\/dev\/null/ {speed=$3 $4} END {gsub(/\(|\)/,"",speed); print speed}'
 }
 
 
 # Bench a single download file.
 function bench_dl {
-    echo -n "Downloading from $1 ... "
-    _dl "$2"
+	echo -n "Downloading from $1 ... "
+	_dl "$2"
 }
 
 
 # Bench downloads from various places in the world.
 function bench_downloads {
-    echo
+	echo
 
-    bench_dl "CacheFly" \
-        http://cachefly.cachefly.net/100mb.test
+	bench_dl "CacheFly"                  http://cachefly.cachefly.net/100mb.test
 
-    bench_dl "Linode - Atlanta GA" \
-        http://atlanta1.linode.com/100MB-atlanta.bin
+	bench_dl "Linode - Atlanta GA"       http://atlanta1.linode.com/100MB-atlanta.bin
 
-    bench_dl "Linode - Dallas TX" \
-        http://dallas1.linode.com/100MB-dallas.bin
+	bench_dl "Linode - Dallas TX"        http://dallas1.linode.com/100MB-dallas.bin
 
-    bench_dl "Linode - Tokyo JP" \
-        http://tokyo1.linode.com/100MB-tokyo.bin
+	bench_dl "Linode - Tokyo JP"         http://tokyo1.linode.com/100MB-tokyo.bin
 
-    bench_dl "Linode - London UK" \
-        http://speedtest.london.linode.com/100MB-london.bin
+	bench_dl "Linode - London UK"        http://speedtest.london.linode.com/100MB-london.bin
 
-    bench_dl "Leaseweb - Haarlem NL" \
-        http://mirror.leaseweb.com/speedtest/100mb.bin
+	bench_dl "Leaseweb - Haarlem NL"     http://mirror.leaseweb.com/speedtest/100mb.bin
 
-    bench_dl "Softlayer - Singapore" \
-        http://speedtest.sng01.softlayer.com/downloads/test100.zip
+	bench_dl "Softlayer - Singapore"     http://speedtest.sng01.softlayer.com/downloads/test100.zip
 
-    bench_dl "Softlayer - Seattle WA" \
-        http://speedtest.sea01.softlayer.com/downloads/test100.zip
+	bench_dl "Softlayer - Seattle WA"    http://speedtest.sea01.softlayer.com/downloads/test100.zip
 
-    bench_dl "Softlayer - San Jose CA" \
-        http://speedtest.sjc01.softlayer.com/downloads/test100.zip
+	bench_dl "Softlayer - San Jose CA"   http://speedtest.sjc01.softlayer.com/downloads/test100.zip
 
-    bench_dl "Softlayer - Washington DC" \
-        http://speedtest.wdc01.softlayer.com/downloads/test100.zip
+	bench_dl "Softlayer - Washington DC" http://speedtest.wdc01.softlayer.com/downloads/test100.zip
 }
 
 
 # Perform comprehensive benchmark of cpu and disk
 function bench_unixbench {
-    pushd UnixBench > /dev/null
-    make all > /dev/null 2>&1
-    ./Run index | grep -v "  exists"
-    popd > /dev/null
+	pushd UnixBench > /dev/null
+	make all > /dev/null 2>&1
+	./Run index | grep -v "  exists"
+	popd > /dev/null
 }
 
 # Compile the linux kernel
@@ -128,26 +118,26 @@ function bench_compile {
 
 # Creates a 100MB file for download testing.
 function create_big_file {
-    echo -n Creating big file ...
-    dd if=/dev/urandom of=bigfile bs=1024 count=102400
-    echo OK
+	echo -n Creating big file ...
+	dd if=/dev/urandom of=bigfile bs=1024 count=102400
+	echo OK
 }
 
 
 # Remove temporary files and directories used/created during benchmarking.
 function remove_temporary_files {
-    echo -n Removing temporary files ...
-    rm -f vpsbench__*
-    rm -f bigfile
-    rm -rf tarfile*
-    rm -rf linux-3.8 linux-3.8.tar.xz
-    echo OK
+	echo -n Removing temporary files ...
+	rm -f vpsbench__*
+	rm -f bigfile
+	rm -rf tarfile*
+	rm -rf linux-3.8 linux-3.8.tar.xz
+	echo OK
 }
 
 
 # Display usage.
 function usage {
-    cat <<USAGE
+	cat <<USAGE
 Usage: vpsbench [OPTION...]
 
 -q Quick benchmark
@@ -161,41 +151,41 @@ USAGE
 
 # The main script.
 function main {
-    test $do_unixbench && bench_unixbench
-    test $do_kernel    && bench_compile
-    test $do_downloads && bench_downloads
-    test $do_quick     && bench_quick
-    test $do_bigfile   && create_big_file
-    test $do_cleanup   && remove_temporary_files
+	test $do_unixbench && bench_unixbench
+	test $do_kernel    && bench_compile
+	test $do_downloads && bench_downloads
+	test $do_quick     && bench_quick
+	test $do_bigfile   && create_big_file
+	test $do_cleanup   && remove_temporary_files
 }
 
 
 # Parse command line options
 while getopts :qdukfx opt; do
-    case "$opt" in
-        q)
-            do_quick=true
-            ;;
-        d)
-            do_downloads=true
-            ;;
-        u)
-            do_unixbench=true
-            ;;
-        k)
-            do_kernel=true
-            ;;
-        f)
-            do_bigfile=true
-            ;;
-        x)
-            do_cleanup=true
-            ;;
-        ?)
-            usage
-            exit 2
-            ;;
-    esac
+	case "$opt" in
+		q)
+			do_quick=true
+			;;
+		d)
+			do_downloads=true
+			;;
+		u)
+			do_unixbench=true
+			;;
+		k)
+			do_kernel=true
+			;;
+		f)
+			do_bigfile=true
+			;;
+		x)
+			do_cleanup=true
+			;;
+		?)
+			usage
+			exit 2
+			;;
+	esac
 done
 
 main
