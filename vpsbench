@@ -35,11 +35,8 @@ function bench_quick {
     echo OK
 
     cat <<INFO
-Share at https://github.com/mgutz/vpsbench/wiki/VPS-Hosts
 
 
-_$now - VMPLAN - DATACENTER - OS - AUTHOR_
-\`\`\`
 CPU model: $cname
 Number of cores: $cores
 CPU frequency: $freq MHz
@@ -49,8 +46,6 @@ System uptime: $up
 I/O speed: $io
 Bzip 25MB: $tf
 Download 100MB file: $dl
-\`\`\`
-
 
 INFO
 
