@@ -53,29 +53,29 @@ Unixbench results:
 
 ```
 ========================================================================
-   BYTE UNIX Benchmarks (Version 5.1.3)
+BYTE UNIX Benchmarks (Version 5.1.3)
 
-   System: testbed: GNU/Linux
-   OS: GNU/Linux -- 3.11.0-12-generic -- #19-Ubuntu SMP Wed Oct 9 16:20:46 UTC 2013
-   Machine: x86_64 (x86_64)
-   Language: en_US.utf8 (charmap="UTF-8", collate="UTF-8")
-   CPU 0: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   CPU 1: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   CPU 2: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   CPU 3: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   CPU 4: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   CPU 5: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   CPU 6: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   CPU 7: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
-          Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET, Intel virtualization
-   00:18:47 up  2:15,  3 users,  load average: 0.01, 0.18, 1.20; runlevel 2
+System: testbed: GNU/Linux
+OS: GNU/Linux -- 3.11.0-12-generic -- #19-Ubuntu SMP Wed Oct 9 16:20:46 UTC 2013
+Machine: x86_64 (x86_64)
+Language: en_US.utf8 (charmap="UTF-8", collate="UTF-8")
+CPU 0: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+CPU 1: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+CPU 2: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+CPU 3: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+CPU 4: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+CPU 5: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+CPU 6: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+CPU 7: Intel(R) Core(TM) i7-3770K CPU @ 3.50GHz (7020.8 bogomips)
+      Hyper-Threading, x86-64, MMX, Physical Address Ext, SYSENTER/SYSEXIT, SYSCALL/SYSRET
+00:18:47 up  2:15,  3 users,  load average: 0.01, 0.18, 1.20; runlevel 2
 
 ------------------------------------------------------------------------
 Benchmark Run: Sat Apr 19 2014 00:18:47 - 00:47:06
