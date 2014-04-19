@@ -1,2 +1,4 @@
-UnixBench*
-bigfile
+/UnixBench*
+/bigfile
+/linux-3.8.tar.xz
+/linux-3.8/

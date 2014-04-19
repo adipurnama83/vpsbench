@@ -114,6 +114,7 @@ function bench_compile {
 	time (make -j$cores > /dev/null)
 	echo ""
 
+	cd ..
 	rm -rf linux-3.8 linux-3.8.tar.xz
 }
 
