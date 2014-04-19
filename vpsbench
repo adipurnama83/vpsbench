@@ -46,7 +46,7 @@ Total amount of RAM: $tram MB
 Total amount of swap: $swap MB
 System uptime: $up
 I/O speed: $io
-Bzip 25MB: $tf
+Gzip 50MB: $tf
 Download 100MB file: $dl
 
 INFO
