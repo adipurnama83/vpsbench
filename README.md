@@ -45,7 +45,7 @@ Total amount of RAM: 15993 MB
 Total amount of swap: 0 MB
 System uptime:   3:13,
 I/O speed:  198 MB/s
-Bzip 25MB: 0.27s
+Gzip 50MB: 0.27s
 Download 100MB file: 6.77MB/s
 ```
 
