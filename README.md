@@ -12,7 +12,7 @@ Tested on:
 
 ```
 # Prerequisites on Ubuntu
-sudo apt-get update && sudo apt-get install -y build-essential time pigz
+sudo apt-get update && sudo apt-get install -y build-essential time pigz git
 
 # Run extensive benchmark
 git clone https://github.com/kofalt/vpsbench.git && cd vpsbench && ./vpsbench -qkx
