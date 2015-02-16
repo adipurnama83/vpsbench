@@ -15,10 +15,10 @@ Tested on:
 sudo apt-get update && sudo apt-get install -y build-essential time pigz
 
 # Run extensive benchmark
-git clone https://github.com/kofalt/vpsbench.git && cd vpsbench && ./vpsbench -qukx
+git clone https://github.com/kofalt/vpsbench.git && cd vpsbench && ./vpsbench -qkx
 ```
 
-The `-u` option can take nearly an hour; omitting that flag is much quicker.
+Adding the `-u` option can take nearly an hour; omitting that flag is much quicker.
 
 ## Usage
 
